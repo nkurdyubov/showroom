@@ -31,7 +31,7 @@ def add_city_corina(df):
     else:    
         if df['url'] == None:
             x = None
-        elif df['url'].startswith('https://www.alfazdrav.ru') or df['url'].startswith('https://alfazdrav.ru') :
+        elif df['url'].startswith('https://www.site.ru') or df['url'].startswith('https://site.ru') :
             x = 'Москва'
         elif 'perm' in df['url']:
             x = 'пермь'
@@ -94,11 +94,9 @@ def add_date(df):
 
 def get_corina():
     corina = psycopg2.connect(
-    database="corina_prod", 
-    user="report", 
-    password="qpXR9BU95Sef", 
-    host="139.162.222.133", 
-    port="5432"
+    """
+    Подключение к базе звонков
+    """
     )
 
     df_corina = pd.read_sql(
@@ -165,11 +163,9 @@ def get_corina():
 
 def get_alice():
     alice = psycopg2.connect(
-    database="alice_prod", 
-    user="reporter", 
-    password="qpXR9BU95Sef", 
-    host="172.104.143.86", 
-    port="5432"
+    """
+    Подключение к базе рекламных кабинетов
+    """
     )
 
     df_alice = pd.read_sql(
@@ -190,7 +186,7 @@ def get_alice():
     from yd_campaign_reports s 
     join yd_agency_clients a on a.id = s.yd_agency_client_id 
     where lower(a.login) in ( 
-        'kr-alfazdrav-msk', 'kr-alfazdrav-nn', 'kr-alfazdrav-sam', 'kr-alfazdrav-sar', 'kr-alfazdrav-perm', 'kr-alfazdrav-ros', 'kr-alfazdrav-ekb', 'kr-alfazdrav-mur', 'kr-alfazdrav-tyum', 'kr-alfazdrav-yar', 'kr-alfazdrav-kirov' 
+        'kr-msk', 'kr-nn', 'kr-sam', 'kr-sar', 'kr-perm', 'krv-ros', 'kr-ekb', 'kr-mur', 'kr-tyum', 'kr-yar', 'krkirov' 
     ) 
     AND 
     s.collected_on BETWEEN {dates}
