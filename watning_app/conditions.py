@@ -6,9 +6,9 @@ from datetime import datetime
 from datetime import timedelta
 
 #Подключение к слаку
-slack = Slacker('xoxb-886445230981-908663299460-AQ4l76vgeWvCRuisQHveVp5D')
+slack = Slacker('СЕРВИСНЫЙ АККАУНТ')
 #Подключение к гуглошиту логи
-gc = pg.authorize(service_account_file= r'C:\Users\kurdyubov.n\Desktop\Untitled Folder\creditnails\creds.json')
+gc = pg.authorize(service_account_file= r'ФАЙЛ С ЛОГОМ НА ГУГЛОДИСКЕ Т.К. ТАКОЕ ТРЕБОВАНИЕ')
 sh = gc.open('logs')
 log_file = sh[0]
 
