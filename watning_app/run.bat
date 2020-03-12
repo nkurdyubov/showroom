@@ -1,1 +1,1 @@
-C:\Users\kurdyubov.n\Anaconda3\Scripts\activate.bat && python "C:\Users\kurdyubov.n\Desktop\Untitled Folder\watning_app\main.py"
+C:\Users\user\Anaconda3\Scripts\activate.bat && python "C:\Users\user\Desktop\Untitled Folder\watning_app\main.py"
