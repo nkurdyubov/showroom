@@ -1,0 +1,40 @@
+_calls_spark = 
+VAR vBaseText =
+"data:image/svg+xml;utf8,
+<svg width=""#ImgWidth"" height=""#ImgHeight"" version=""1.1"" xmlns=""http://www.w3.org/2000/svg"" style=""background: #000000"">
+  <polyline points=""#Points"" stroke=""orange"" fill=""transparent"" stroke-width=""4""/>
+</svg>"
+
+VAR vImgWidth = 300
+VAR vImgHeight = 240
+
+VAR vDaysList = VALUES( DateId_table[DateID] )
+VAR vDayFirst = MINX( vDaysList ; DateId_table[DateID] )
+VAR vDayLast  = MAXX( vDaysList ; DateId_table[DateID] )
+
+VAR vClicksMin = MINX( vDaysList ; [_count_calls] + 0 )
+VAR vClicksMax = MAXX( vDaysList ; [_count_calls] + 0 )
+
+VAR vPoints = 
+CONCATENATEX(
+    vDaysList;
+    VAR vcPointsX = 
+        INT(
+            DIVIDE(DateId_table[DateID] - vDayFirst; vDayLast - vDayFirst )
+            * vImgWidth
+        )
+    
+    VAR vcPonitsY = 
+        vImgHeight - 
+        INT(
+            DIVIDE([_count_calls] - vClicksMin; vClicksMax - vClicksMin)
+            * vImgHeight
+        )
+    RETURN vcPointsX & "," & vcPonitsY;
+    ", ";
+    DateId_table[DateID]
+)
+
+
+VAR vReturn = SUBSTITUTE(SUBSTITUTE(SUBSTITUTE( vBaseText; "#ImgWidth"; vImgWidth ); "#ImgHeight"; vImgHeight ) ; "#Points" ; vPoints )
+RETURN vReturn
