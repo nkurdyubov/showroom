@@ -8,7 +8,7 @@ from datetime import timedelta
 #Подключение к слаку
 slack = Slacker('СЕРВИСНЫЙ АККАУНТ')
 #Подключение к гуглошиту логи
-gc = pg.authorize(service_account_file= r'ФАЙЛ С ЛОГОМ НА ГУГЛОДИСКЕ Т.К. ТАКОЕ ТРЕБОВАНИЕ')
+gc = pg.authorize(service_account_file= r'ФАЙЛ С ЛОГОМ НА ГУГЛОДИСКЕ, ТАКОЕ ТРЕБОВАНИЕ')
 sh = gc.open('logs')
 log_file = sh[0]
 
