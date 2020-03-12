@@ -8,9 +8,9 @@ import pygsheets as pg
 import plan
 import conditions
 
-slack = Slacker('xoxb-886445230981-908663299460-AQ4l76vgeWvCRuisQHveVp5D')
+slack = Slacker('access_TOKEN')
 
-gc = pg.authorize(service_account_file= r'C:\Users\kurdyubov.n\Desktop\Untitled Folder\creditnails\creds.json')
+gc = pg.authorize(service_account_file= r'CREDENTIALS')
 sh = gc.open('logs')
 wks = sh[0]
 
